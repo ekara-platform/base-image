@@ -13,7 +13,7 @@ script:
 
 after_success:
   - export TAG=`if [ “$TRAVIS_BRANCH” == “master” ]; then echo “latest”; else echo $TRAVIS_BRANCH ; fi`
-  - echo $IMAGE:$TAG:$COMMIT
+  - echo $IMAGE:$TAG:$COMMIT:$TRAVIS_EVENT_TYPE:$TRAVIS_PULL_REQUEST
 #  - docker build -f Dockerfile -t $IMAGE:$COMMIT .
 #  - docker tag $IMAGE:$COMMIT $IMAGE:$TAG
 #  - docker push $IMAGE:$TAG
