@@ -3,11 +3,17 @@ sudo: 'required'
 services:
   - 'docker'
 
+env:
+ global:
+ - COMMIT=${TRAVIS_COMMIT::6}
+ - IMAGE=lagoonplatform/ansible-docker-alpine
+ 
 script:
-  - 'make image'
+  - docker build -t $IMAGE:$COMMIT .
 
 after_success:
-  - if [[ "$TRAVIS_BRANCH" == "master" ]]; then
-      docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD ;
-      make push-image ;
-    fi
+  - export TAG=`if [ “$TRAVIS_BRANCH” == “master” ]; then echo “latest”; else echo $TRAVIS_BRANCH ; fi`
+  - echo $IMAGE:$TAG:$COMMIT
+#  - docker build -f Dockerfile -t $IMAGE:$COMMIT .
+#  - docker tag $IMAGE:$COMMIT $IMAGE:$TAG
+#  - docker push $IMAGE:$TAG
