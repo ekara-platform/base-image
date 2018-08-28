@@ -45,3 +45,6 @@ RUN	apk update && \
 	&& apk del build-dependencies \
 	&& rm -rf /tmp/* \
 	&& rm -rf /var/cache/apk/*
+
+ADD endpoints_path.json /usr/lib/python2.7/site-packages/boto/endpoints.json
+
