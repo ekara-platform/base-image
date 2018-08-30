@@ -6,14 +6,19 @@ services:
 env:
  global:
  - COMMIT=${TRAVIS_COMMIT::6}
- - IMAGE=lagoonplatform/ansible-docker-alpine
- 
-script:
-  - docker build -t $IMAGE:$COMMIT .
+ - IMAGE=ansible-docker-alpine
 
-after_success:
-  - export TAG=`if [ “$TRAVIS_BRANCH” == “master” ]; then echo “latest”; else echo $TRAVIS_BRANCH ; fi`
-  - echo $IMAGE:$TAG:$COMMIT:$TRAVIS_EVENT_TYPE:$TRAVIS_PULL_REQUEST
-#  - docker build -f Dockerfile -t $IMAGE:$COMMIT .
-#  - docker tag $IMAGE:$COMMIT $IMAGE:$TAG
-#  - docker push $IMAGE:$TAG
+jobs:
+  include:
+    - stage: "Check docker image"
+      script:
+      - docker build -f Dockerfile -t $IMAGE:$COMMIT .
+      if: type = pull_request
+    - stage: "Build and Push Docker Image"
+      script:
+      - docker build -f Dockerfile -t $IMAGE:$COMMIT .
+      - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
+      - docker tag $IMAGE:$COMMIT $DOCKER_REPO/$IMAGE:$TAG
+      - docker push $DOCKER_REPO/$IMAGE:$TAG
+      if: type = push AND env(DOCKER_REPO) != "" AND env(DOCKER_USERNAME) != ""
+      
