@@ -19,6 +19,7 @@ jobs:
       - docker build -f Dockerfile -t $IMAGE:$COMMIT .
       - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
       - docker tag $IMAGE:$COMMIT $DOCKER_REPO/$IMAGE:$TAG
+      - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
       - docker push $DOCKER_REPO/$IMAGE:$TAG
       if: type = push AND env(DOCKER_REPO) != "" AND env(DOCKER_USERNAME) != ""
       
