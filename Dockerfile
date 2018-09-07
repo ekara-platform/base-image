@@ -28,15 +28,15 @@ RUN	apk update && \
 		cffi \
 		botocore \
 	&& pip install \
-		ansible==2.5.0 \
+		ansible==2.6.4 \
 		ansible-lint==3.4.23 \
-		awscli==1.15.59 \
+		awscli==1.16.9 \
 		boto==2.49.0 \
-		boto3==1.7.58 \
-		docker==3.4.1 \
+		boto3==1.8.9 \
+		docker==3.5.0 \
 		dopy==0.3.7 \
     && mkdir -p /tmp/download \
-    && curl -L https://download.docker.com/linux/static/stable/x86_64/docker-18.03.1-ce.tgz | tar -xz -C /tmp/download \
+    && curl -L https://download.docker.com/linux/static/stable/x86_64/docker-18.06.1-ce.tgz | tar -xz -C /tmp/download \
     && mv /tmp/download/docker/docker /usr/local/bin/ \
     && cd /tmp/download \
 	&& git clone https://github.com/bryanpkc/corkscrew.git \
