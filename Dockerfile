@@ -35,6 +35,7 @@ RUN	apk update && \
 		boto3==1.8.9 \
 		docker==3.5.0 \
 		dopy==0.3.7 \
+		openstacksdk \
     && mkdir -p /tmp/download \
     && curl -L https://download.docker.com/linux/static/stable/x86_64/docker-18.06.1-ce.tgz | tar -xz -C /tmp/download \
     && mv /tmp/download/docker/docker /usr/local/bin/ \
