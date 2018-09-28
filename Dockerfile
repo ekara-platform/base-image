@@ -17,12 +17,16 @@ RUN	apk update && \
     && apk --update add --virtual \
 		build-dependencies \
 		python-dev \
+		python2-dev \
 		libffi-dev \
 		openssl-dev \
 		build-base \
 		autoconf \
 		automake \
 		vim \
+		gcc \
+		libc-dev \
+		linux-headers \
 	&& pip install --upgrade \
 		pip \
 		cffi \
