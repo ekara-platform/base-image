@@ -17,12 +17,16 @@ RUN	apk update && \
     && apk --update add --virtual \
 		build-dependencies \
 		python-dev \
+		python2-dev \
 		libffi-dev \
 		openssl-dev \
 		build-base \
 		autoconf \
 		automake \
 		vim \
+		gcc \
+		libc-dev \
+		linux-headers \
 	&& pip install --upgrade \
 		pip \
 		cffi \
@@ -35,6 +39,7 @@ RUN	apk update && \
 		boto3==1.8.9 \
 		docker==3.5.0 \
 		dopy==0.3.7 \
+		openstacksdk \
     && mkdir -p /tmp/download \
     && curl -L https://download.docker.com/linux/static/stable/x86_64/docker-18.06.1-ce.tgz | tar -xz -C /tmp/download \
     && mv /tmp/download/docker/docker /usr/local/bin/ \
