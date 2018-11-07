@@ -30,16 +30,15 @@ RUN	apk update && \
 	&& pip install --upgrade \
 		pip \
 		cffi \
-		botocore \
 	&& pip install \
-		ansible==2.6.4 \
-		ansible-lint==3.4.23 \
-		awscli==1.16.9 \
+		ansible==2.7.1 \
+		ansible-lint==3.5.1 \
+		awscli==1.16.47 \
+		boto3==1.9.37 \
 		boto==2.49.0 \
-		boto3==1.8.9 \
-		docker==3.5.0 \
+		docker==3.5.1 \
 		dopy==0.3.7 \
-		openstacksdk \
+		openstacksdk==0.19.0 \
     && mkdir -p /tmp/download \
     && curl -L https://download.docker.com/linux/static/stable/x86_64/docker-18.06.1-ce.tgz | tar -xz -C /tmp/download \
     && mv /tmp/download/docker/docker /usr/local/bin/ \
