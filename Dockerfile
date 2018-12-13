@@ -29,7 +29,8 @@ RUN	apk update && \
 		linux-headers \
 	&& pip install --upgrade \
 		pip \
-		cffi \
+	&& pip install \
+		cffi==1.11.5 \
 		shade \
 	&& pip install \
 		ansible==2.7.4 \
