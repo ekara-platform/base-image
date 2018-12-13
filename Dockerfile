@@ -30,6 +30,7 @@ RUN	apk update && \
 	&& pip install --upgrade \
 		pip \
 		cffi \
+		shade \
 	&& pip install \
 		ansible==2.7.1 \
 		ansible-lint==3.5.1 \
@@ -39,6 +40,7 @@ RUN	apk update && \
 		docker==3.5.1 \
 		dopy==0.3.7 \
 		openstacksdk==0.19.0 \
+		ansible-tower-cli==3.3.0 \
     && mkdir -p /tmp/download \
     && curl -L https://download.docker.com/linux/static/stable/x86_64/docker-18.06.1-ce.tgz | tar -xz -C /tmp/download \
     && mv /tmp/download/docker/docker /usr/local/bin/ \
