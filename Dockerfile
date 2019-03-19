@@ -39,3 +39,5 @@ RUN	apk update && \
 	&& apk del build-dependencies \
 	&& rm -rf /tmp/* \
 	&& rm -rf /var/cache/apk/*
+
+ADD ./docker_stack.py /usr/share/ansible/plugins/modules/
