@@ -30,6 +30,7 @@ RUN	apk update && \
 		docker==3.6.0 \
 		dopy==0.3.7 \
 		boto3==1.9.37 \
+		boto==2.49.0 \
 		jsondiff==1.1.2 \
     && mkdir -p /tmp/download \
     && curl -L https://download.docker.com/linux/static/stable/x86_64/docker-18.06.1-ce.tgz | tar -xz -C /tmp/download \
