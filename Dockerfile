@@ -28,7 +28,7 @@ RUN	apk update && \
 		ansible==2.7.4 \
 		ansible-lint==3.5.1 \
 		docker==3.6.0 \
-		d1.1.2opy==0.3.7 \
+		dopy==0.3.7 \
 		jsondiff==1.1.2 \
     && mkdir -p /tmp/download \
     && curl -L https://download.docker.com/linux/static/stable/x86_64/docker-18.06.1-ce.tgz | tar -xz -C /tmp/download \
