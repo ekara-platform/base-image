@@ -29,6 +29,7 @@ RUN	apk update && \
 		ansible-lint==3.5.1 \
 		docker==3.6.0 \
 		dopy==0.3.7 \
+		jsondiff==1.1.2 \
 		boto3==1.9.64 \
 		boto==2.49.0 \
     && mkdir -p /tmp/download \
