@@ -43,4 +43,3 @@ RUN	apk update && \
 
 
 ADD ./docker_stack.py /usr/share/ansible/plugins/modules/
-ADD ./endpoints_path.json /usr/lib/python2.7/site-packages/boto/endpoints.json
