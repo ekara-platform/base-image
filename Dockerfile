@@ -29,7 +29,6 @@ RUN	apk update && \
 		ansible-lint==3.5.1 \
 		docker==3.6.0 \
 		dopy==0.3.7 \
-		jsondiff==1.1.2 \
     && mkdir -p /tmp/download \
     && curl -L https://download.docker.com/linux/static/stable/x86_64/docker-18.06.1-ce.tgz | tar -xz -C /tmp/download \
     && mv /tmp/download/docker/docker /usr/local/bin/ \
@@ -40,6 +39,5 @@ RUN	apk update && \
 	&& apk del build-dependencies \
 	&& rm -rf /tmp/* \
 	&& rm -rf /var/cache/apk/*
-
-
+	
 ADD ./docker_stack.py /usr/share/ansible/plugins/modules/
