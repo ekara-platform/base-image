@@ -10,6 +10,7 @@ RUN apk update \
 		build-base \
 		python2-dev \
 		libffi-dev \
+		openssl-dev \
 		autoconf \
 		automake \
     && pip install --upgrade pip \
