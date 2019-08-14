@@ -4,7 +4,6 @@ RUN apk update \
 		git \
 		openssl \
 		openssh-client \
-		ansible \
 		python2 \
 		py2-pip \
     && apk --update --virtual build-dependencies add \
@@ -12,6 +11,7 @@ RUN apk update \
 		autoconf \
 		automake \
     && pip install --upgrade pip \
+    && pip install ansible==2.8.3 \
     && mkdir -p /tmp/download \
     && git clone https://github.com/bryanpkc/corkscrew.git /tmp/download/corkscrew \
     && cd /tmp/download/corkscrew && autoreconf --install && ./configure && make install \
