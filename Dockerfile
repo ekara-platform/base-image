@@ -8,6 +8,8 @@ RUN apk update \
 		py2-pip \
     && apk --update --virtual build-dependencies add \
 		build-base \
+		python2-dev \
+		libffi-dev \
 		autoconf \
 		automake \
     && pip install --upgrade pip \
