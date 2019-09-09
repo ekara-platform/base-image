@@ -1,4 +1,5 @@
 FROM alpine:3.10
+ADD ansible.cfg /etc/ansible/ansible.cfg
 RUN apk update \ 
     && apk --no-cache --update add \
 		git \
