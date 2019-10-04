@@ -6,7 +6,7 @@ services:
 env:
  global:
  - COMMIT=${TRAVIS_COMMIT::6}
- - IMAGE=ansible-docker-alpine
+ - IMAGE=base
 
 jobs:
   include:
@@ -14,7 +14,7 @@ jobs:
       script:
       - docker build -f Dockerfile -t $IMAGE:$COMMIT .
       if: type = pull_request
-    - stage: "Build and Push Docker Image"
+    - stage: "Build and push Docker Image"
       script:
       - docker build -f Dockerfile -t $IMAGE:$COMMIT .
       - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
@@ -22,4 +22,3 @@ jobs:
       - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
       - docker push $DOCKER_REPO/$IMAGE:$TAG
       if: type = push AND env(DOCKER_REPO) != "" AND env(DOCKER_USERNAME) != ""
-      
