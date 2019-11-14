@@ -7,6 +7,7 @@ RUN apk update \
 		openssh-client \
 		python2 \
 		py2-pip \
+		rsync \
     && apk --update --virtual build-dependencies add \
 		build-base \
 		python2-dev \
