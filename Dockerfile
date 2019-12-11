@@ -8,10 +8,10 @@ RUN apk update \
 		python2 \
 		py2-pip \
 		rsync \
-    && apk --update --virtual build-dependencies add \
 		build-base \
 		python2-dev \
 		libffi-dev \
+    && apk --update --virtual build-dependencies add \
 		openssl-dev \
 		autoconf \
 		automake \
