@@ -5,18 +5,20 @@ RUN apk update \
 		git \
 		openssl \
 		openssh-client \
-		python2 \
-		py2-pip \
+		python3 \
 		rsync \
 		build-base \
-		python2-dev \
+		python3-dev \
 		libffi-dev \
     && apk --update --virtual build-dependencies add \
 		openssl-dev \
 		autoconf \
 		automake \
-    && pip install --upgrade pip \
-    && pip install ansible==2.8.3 \
+    && pip3 install --upgrade pip \
+    && python3 -m venv /opt/virtualenvs/default \
+    && source /opt/virtualenvs/default/bin/activate \
+    && pip3 install ansible==2.9.4 \
+    && deactivate \
     && mkdir -p /tmp/download \
     && git clone https://github.com/bryanpkc/corkscrew.git /tmp/download/corkscrew \
     && cd /tmp/download/corkscrew && autoreconf --install && ./configure && make install \
