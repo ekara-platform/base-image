@@ -17,7 +17,7 @@ RUN apk update \
     && pip3 install --upgrade pip \
     && python3 -m venv /opt/virtualenvs/default \
     && source /opt/virtualenvs/default/bin/activate \
-    && pip3 install ansible==2.9.4 \
+    && pip3 install ansible==2.9.6 \
     && deactivate \
     && mkdir -p /tmp/download \
     && git clone https://github.com/bryanpkc/corkscrew.git /tmp/download/corkscrew \
